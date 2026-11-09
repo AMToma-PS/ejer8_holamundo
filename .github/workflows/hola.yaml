@@ -1,20 +1,22 @@
 name: Ejecutar hola.java
 
 on:
-	push:
-		branches:
-			- main
+  push:
+    branches:
+      - main
 
 jobs:
-	ejecutar:
-		runs-on: ubuntu-latest
-		steps:
-			- name: Obtener código
-				uses: actions/checkout@v4
-			- name: Configurar Java
-				uses: actions/setup-java@v4
-				with:
-					distribution: temurin
-					java-version: '17'
-			- name: Ejecutar hola.java
-				run: java src/hola.java
+  ejecutar:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Obtener código
+        uses: actions/checkout@v4
+      - name: Configurar Java
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+      - name: Ejecutar hola.java
+        run: |
+          javac -d out src/hola.java
+          java -cp out src.hola
